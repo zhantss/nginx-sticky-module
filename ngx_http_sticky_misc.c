@@ -278,7 +278,8 @@ ngx_int_t ngx_http_sticky_misc_text_raw(ngx_pool_t *pool, struct sockaddr *in, n
 	if (digest->data == NULL) {
 		return NGX_ERROR;
 	}
-	digest->len = ngx_sock_ntop(in, digest->data, len, 1);
+	//digest->len = ngx_sock_ntop(in, digest->data, len, 1);
+	digest->len = ngx_sock_ntop(in, sizeof(struct sockaddr_in), digest->data, len, 1);
 	return NGX_OK;
 	return NGX_OK;
 }
